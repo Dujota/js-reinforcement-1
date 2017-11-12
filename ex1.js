@@ -33,3 +33,24 @@ project = {
     }
   ]
 }
+
+// check to see how many tasks there are to be assigned
+console.log(`\ntotal tasks to assign ${project.steps.length}\n`);
+
+// check to see how many members there are
+console.log(`total number of members ${project.committee.length}\n`);
+
+// 3 taks per committee member, loop through the object and add a committee member to the steps each time and move on to the next member after 3 taks have been assigned
+
+// tried filter, map and forEach -- they all yield the same result for the hash
+project.steps.filter((task, count) => {
+  if (count < 3) {
+    task.committee = project.committee[2]
+  } else if (count >= 3 && count < 6) {
+    task.committee = project.committee[1]
+  } else if (count >= 6 && count <= project.steps.length)
+    {task.committee = project.committee[0]
+  }
+});
+
+console.log(project);
